@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <PortType>1</PortType>
+  <COMPort>-1</COMPort>
+  <BoudRate>115200</BoudRate>
+  <CRC>true</CRC>
+  <AppAddress>08005000</AppAddress>
+  <AppDownloadFile>.\GRC-H0PN_Firmware_IAP_2.0.7.hex</AppDownloadFile>
+</Configuration>
