@@ -323,6 +323,14 @@
 									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C3"/>
 								</Input>
 							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="3" TransferSequence="1">
+									<Name TextId="GAI_4HV_MODULE_ParameterData" />
+									<Const Data="0x00,0x00,0x14" />
+									<Ref TextId="AI_NumRange" ValueItemTarget="IDV_AI_NumRange" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+									<Ref TextId="AI_Filter"  Visible="true" DataType="Unsigned16" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0..10000" DefaultValue="20"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>							
 							<ModuleInfo CategoryRef="CATEGORY_AI">
 								<Name TextId="TextId_Module_GAI_4HV" />
 								<InfoText TextId="InfoTextId_Module_GAI_4HV" />
