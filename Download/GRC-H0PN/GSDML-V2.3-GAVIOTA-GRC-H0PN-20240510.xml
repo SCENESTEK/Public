@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.3.xsd">
+	<ProfileHeader>
+		<ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+		<ProfileRevision>1.00</ProfileRevision>
+		<!-- VERSION: 20240422.xml--> 
+		<ProfileName>Device Profile for PROFINET Devices</ProfileName>
+		<ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+		<ProfileClassID>Device</ProfileClassID>
+		<ISO15745Reference>
+			<ISO15745Part>4</ISO15745Part>
+			<ISO15745Edition>1</ISO15745Edition>
+			<ProfileTechnology>GSDML</ProfileTechnology>
+		</ISO15745Reference>
+	</ProfileHeader>
+	<ProfileBody>
+		<DeviceIdentity VendorID="0x8309" DeviceID="0x0001">
+			<InfoText TextId="GRC-H0PN" />
+			<VendorName Value="GAVIOTA" />
+		</DeviceIdentity>
+		<DeviceFunction>
+			<Family MainFamily="I/O" ProductFamily="Remote IO Modules" />
+		</DeviceFunction>
+		<ApplicationProcess>
+			<DeviceAccessPointList>
+				<DeviceAccessPointItem ID="DAP 1" PhysicalSlots="0..32" ModuleIdentNumber="0x00000001" MinDeviceInterval="8" ImplementationType="GRC-H0PN" DNS_CompatibleName="GRC-H0PN" FixedInSlots="0" ExtendedAddressAssignmentSupported="false" ObjectUUID_LocalIndex="1" MultipleWriteSupported="false" PowerOnToCommReady="210" DeviceAccessSupported="true" RequiredSchemaVersion="V2.3" PNIO_Version="V2.2" NameOfStationNotTransferable = "true" SharedDeviceSupported="true">
+					<ModuleInfo>
+						<Name TextId="DAP_NAME" />
+						<InfoText TextId="DAP_MODULE_INFO" />
+						<VendorName Value="GAVIOTA" />
+						<OrderNumber Value="GRC-H0PN" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="V18.0.5" />
+					</ModuleInfo>
+					<SubslotList>
+						<SubslotItem SubslotNumber="32768" TextId="TOK_Subslot_8000" />
+						<SubslotItem SubslotNumber="32769" TextId="TOK_Subslot_8001" />
+						<SubslotItem SubslotNumber="32770" TextId="TOK_Subslot_8002" />
+					</SubslotList>
+					<IOConfigData MaxInputLength="1015" MaxOutputLength="1015" />
+					<UseableModules>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GDI_16N" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GDI_16P" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GDO_16P" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GDO_16N" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAO_4HV" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAO_4HI" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAO_4LV" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAO_4LI" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAI_4HV" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAI_4HI" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GRM_485" AllowedInSlots = "1..32"/>
+						<ModuleItemRef ModuleItemTarget="ID_Mod_GAO_4DA" AllowedInSlots = "1..32"/>
+					</UseableModules>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="DAP 2" SubmoduleIdentNumber="0x00000001" Writeable_IM_Records="1 2 3 4">
+							<IOData IOPS_Length="1" IOCS_Length="1" />
+							<RecordDataList>
+								<ParameterRecordDataItem Index="8192" Length="4">
+									<Name TextId="TI_OFFSET"/>
+									<Const Data="0x00,0x00,0x10,0x00"/>
+									<!-- const offset in ns input trigger T3 -->
+								</ParameterRecordDataItem>
+								<ParameterRecordDataItem Index="8193" Length="4">
+									<Name TextId="TO_OFFSET"/>
+									<Const Data="0x00,0x00,0x20,0x00"/>
+									<!-- const offset in ns output trigger T4 -->
+								</ParameterRecordDataItem>
+								<ParameterRecordDataItem Index="3" Length="1" TransferSequence="0">
+									<Name TextId="MT LED Setup" />
+									<Const Data="0x00" ByteOffset="0" />
+									<Ref ValueItemTarget="Function_for_MT_LED" DataType="BitArea" ByteOffset="0" BitOffset="0" BitLength="4" DefaultValue="0" AllowedValues="0 1" Changeable="true" Visible="true" TextId="TOK_Function_of _MT-LED" />
+								</ParameterRecordDataItem>
+								<ParameterRecordDataItem Index="4" Length="1">
+									<Name TextId="TextId_Safety_Output" />
+									<Const Data="0x00" ByteOffset="0" />
+									<Ref ValueItemTarget="Safety_Output_Value" DataType="Unsigned8" ByteOffset="0" DefaultValue="0" AllowedValues="0 1" Changeable="true" TextId="TOK_Safety_Output_Value" />
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo>
+								<Name TextId="TOK_TPS1_board" />
+								<InfoText TextId="TOK_TPS1_board" />
+							</ModuleInfo>
+							<IsochroneMode T_DC_Base="4" T_DC_Min="1" T_DC_Max="8" T_IO_Base="1000" T_IO_InputMin="40" T_IO_OutputMin="40" IsochroneModeRequired="false" />
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+					<SystemDefinedSubmoduleList>
+						<InterfaceSubmoduleItem ID="IDS_1I" SubslotNumber="32768" SubmoduleIdentNumber="0x000a" IsochroneModeSupported="true" SupportedRT_Classes="RT_CLASS_1;RT_CLASS_3" IsochroneModeInRT_Classes="RT_CLASS_3" TextId="TOK_DAP_InterfaceModule" SupportedProtocols="LLDP;SNMP" SupportedMibs="MIB2" NetworkComponentDiagnosisSupported="true" DCP_BoundarySupported="false" PTP_BoundarySupported="true" DCP_HelloSupported="true">
+							<RT_Class3Properties MaxBridgeDelay="3860" MaxNumberIR_FrameData="128" ForwardingMode="Relative"/>
+							<SynchronisationMode SupportedRole="SyncSlave" MaxLocalJitter="10" T_PLL_MAX="1000" SupportedSyncProtocols="PTCP" />
+							<ApplicationRelations NumberOfAdditionalInputCR="0" NumberOfAdditionalMulticastProviderCR="0" NumberOfAdditionalOutputCR="0" NumberOfMulticastConsumerCR="0" NumberOfAR="2">
+								<TimingProperties SendClock="8 16 32" ReductionRatio="1 2 4 8 16 32 64 128 256 512" />
+								<RT_Class3TimingProperties SendClock="8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120 124 128" ReductionRatio="1" ReductionRatioPow2="2 4 8 16 32 64 128" />
+							</ApplicationRelations>
+							<MediaRedundancy SupportedRole="Client" />
+						</InterfaceSubmoduleItem>
+						<PortSubmoduleItem ID="IDS_1P1" SubslotNumber="32769" SubmoduleIdentNumber="0x000b" MAUTypes="16" TextId="TOK_Port1" MaxPortRxDelay="173" MaxPortTxDelay="74" PortDeactivationSupported="false" LinkStateDiagnosisCapability="Up+Down" SupportsRingportConfig="true" IsDefaultRingport="true" />
+						<PortSubmoduleItem ID="IDS_1P2" SubslotNumber="32770" SubmoduleIdentNumber="0x000c" MAUTypes="16" TextId="TOK_Port2" MaxPortRxDelay="173" MaxPortTxDelay="74" PortDeactivationSupported="false" LinkStateDiagnosisCapability="Up+Down" SupportsRingportConfig="true" IsDefaultRingport="true" />
+					</SystemDefinedSubmoduleList>
+					<Graphics>
+						<GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="ID_Graph_V2.2" />
+					</Graphics>
+				</DeviceAccessPointItem>
+			</DeviceAccessPointList>
+			<ModuleList>
+				<!--GDI_16P-->
+				<ModuleItem ID="ID_Mod_GDI_16P" ModuleIdentNumber="0x00000002">
+					<ModuleInfo CategoryRef="CATEGORY_DI">
+						<Name TextId="TextId_Module_GDI_16P" />
+						<InfoText TextId="InfoTextId_Module_GDI_16P" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GDI_16P_CATEGORY_DI" SubmoduleIdentNumber="0x00000002" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem TextId="GDI_16P_BYTE_LEN" DataType="OctetString" Length="2" UseAsBits="true" />
+								</Input>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="2" TransferSequence="1">
+									<Name TextId="GDI_16P_MODULE_ParameterData" />
+									<Const Data="0x00,0x0a" />
+									<Ref DataType="Unsigned16" ByteOffset="0"  DefaultValue="20" AllowedValues="0..65535" TextId="DI_CHANNEL_DEBOUNCE_TIME"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo CategoryRef="CATEGORY_DI">
+								<Name TextId="TextId_Module_GDI_16P" />
+								<InfoText TextId="InfoTextId_Module_GDI_16P" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GDI_16N-->
+				<ModuleItem ID="ID_Mod_GDI_16N" ModuleIdentNumber="0x00000012">
+					<ModuleInfo CategoryRef="CATEGORY_DI">
+						<Name TextId="TextId_Module_GDI_16N" />
+						<InfoText TextId="InfoTextId_Module_GDI_16N" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GDI_16N_CATEGORY_DI" SubmoduleIdentNumber="0x00000012" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem TextId="GDI_16N_BYTE_LEN" DataType="OctetString" Length="2" UseAsBits="true" />
+								</Input>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="2" TransferSequence="1">
+									<Name TextId="GDI_16N_MODULE_ParameterData" />
+									<Const Data="0x00,0x0a" />
+									<Ref DataType="Unsigned16" ByteOffset="0"  DefaultValue="20" AllowedValues="0..65535" TextId="DI_CHANNEL_DEBOUNCE_TIME"/>
+								</ParameterRecordDataItem>	
+							</RecordDataList>							
+							<ModuleInfo CategoryRef="CATEGORY_DI">
+								<Name TextId="TextId_Module_GDI_16N" />
+								<InfoText TextId="InfoTextId_Module_GDI_16N" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GDO_16P-->
+				<ModuleItem ID="ID_Mod_GDO_16P" ModuleIdentNumber="0x00000005" >
+					<ModuleInfo CategoryRef="CATEGORY_DO">
+						<Name TextId="TextId_Module_GDO_16P" />
+						<InfoText TextId="InfoTextId_Module_GDO_16P" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GDO_16P_CATEGORY_DO" SubmoduleIdentNumber="0x00000005" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem TextId="GDO_16P_BYTE_LEN" DataType="OctetString" Length="2" UseAsBits="true" />
+								</Output>
+							</IOData>
+							<ModuleInfo CategoryRef="CATEGORY_DO">
+								<Name TextId="TextId_Module_GDO_16P" />
+								<InfoText TextId="InfoTextId_Module_GDO_16P" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GDO_16N-->
+				<ModuleItem ID="ID_Mod_GDO_16N" ModuleIdentNumber="0x00000006" >
+					<ModuleInfo CategoryRef="CATEGORY_DO">
+						<Name TextId="TextId_Module_GDO_16N" />
+						<InfoText TextId="InfoTextId_Module_GDO_16N" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GDO_16N_CATEGORY_DO" SubmoduleIdentNumber="0x00000006" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem TextId="GDO_16N_BYTE_LEN" DataType="OctetString" Length="2" UseAsBits="true" />
+								</Output>
+							</IOData>
+							<ModuleInfo CategoryRef="CATEGORY_DO">
+								<Name TextId="TextId_Module_GDO_16N" />
+								<InfoText TextId="InfoTextId_Module_GDO_16N" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAO_4HV  4Â·16Î»µçÑ¹ÐÍÄ£ÄâÁ¿Êä³ö(0~10V/0~5V) -->
+				<ModuleItem ID="ID_Mod_GAO_4HV" ModuleIdentNumber="0x0000000E">
+					<ModuleInfo CategoryRef="CATEGORY_AO">
+						<Name TextId="TextId_Module_GAO_4HV"/>
+						<InfoText TextId="InfoTextId_Module_GAO_4HV"/>
+						<HardwareRelease Value="1"/>
+						<SoftwareRelease Value="1"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAO_4HV_CATEGORY_AO" SubmoduleIdentNumber="0x0000000E" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C3"/>
+								</Output>
+							</IOData>
+							<ModuleInfo CategoryRef="CATEGORY_AO">
+								<Name TextId="TextId_Module_GAO_4HV" />
+								<InfoText TextId="InfoTextId_Module_GAO_4HV" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAO_4LV 4Â·12Î»µçÑ¹ÐÍÄ£ÄâÁ¿Êä³ö(0~10V/0~5V)-->
+				<ModuleItem ID="ID_Mod_GAO_4LV" ModuleIdentNumber="0x0000000D">
+					<ModuleInfo CategoryRef="CATEGORY_AO">
+						<Name TextId="TextId_Module_GAO_4LV" />
+						<InfoText TextId="InfoTextId_Module_GAO_4LV" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAO_4LV_CATEGORY_AO" SubmoduleIdentNumber="0x0000000D" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned8" UseAsBits="false" TextId="TextId_Module_Status"/>
+								</Input>									
+								<Output>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C3"/>
+								</Output>
+							</IOData>		
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="2" TransferSequence="1">
+									<Name TextId="GAO_4LV_MODULE_ParameterData" />
+									<Const Data="0x00,0x01" />
+									<Ref TextId="AI_NumRange" ValueItemTarget="IDV_AI_NumRange" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0..2" DefaultValue="2"/>
+									<Ref TextId="AI_Voltage_Type"  ValueItemTarget="IDV_AI_Voltage_Type" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>														
+							<ModuleInfo CategoryRef="CATEGORY_AO">
+								<Name TextId="TextId_Module_GAO_4LV" />
+								<InfoText TextId="InfoTextId_Module_GAO_4LV" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAO_4LI 4Â·12Î»µçÁ÷ÐÍÄ£ÄâÁ¿Êä³ö(4~20mA/0~20mA)-->
+				<ModuleItem ID="ID_Mod_GAO_4LI" ModuleIdentNumber="0x0000000F">
+					<ModuleInfo CategoryRef="CATEGORY_AO">
+						<Name TextId="TextId_Module_GAO_4LI" />
+						<InfoText TextId="InfoTextId_Module_GAO_4LI" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAO_4LI_CATEGORY_AO" SubmoduleIdentNumber="0x0000000F" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned8" UseAsBits="false" TextId="TextId_Module_Status"/>
+								</Input>											
+								<Output>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C3"/>
+								</Output>					
+							</IOData>				
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="2" TransferSequence="1">
+									<Name TextId="GAO_4LI_MODULE_ParameterData" />
+									<Const Data="0x00,0x01" />
+									<Ref TextId="AI_NumRange" ValueItemTarget="IDV_AI_NumRange" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0..2" DefaultValue="2"/>
+									<Ref TextId="AI_Current_Type"  ValueItemTarget="IDV_AI_Current_Type" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>								
+							<ModuleInfo CategoryRef="CATEGORY_AO">
+								<Name TextId="TextId_Module_GAO_4LI" />
+								<InfoText TextId="InfoTextId_Module_GAO_4LI" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAO_4HI  4Â·16Î»µçÁ÷ÐÍÄ£ÄâÁ¿Êä³ö(4~20mA/0~20mA) -->
+				<ModuleItem ID="ID_Mod_GAO_4HI" ModuleIdentNumber="0x00000010">
+					<ModuleInfo CategoryRef="CATEGORY_AO">
+						<Name TextId="TextId_Module_GAO_4HI" />
+						<InfoText TextId="InfoTextId_Module_GAO_4HI" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAO_4HI_CATEGORY_AO" SubmoduleIdentNumber="0x00000010" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Output>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C3"/>
+								</Output>
+							</IOData>
+							<ModuleInfo CategoryRef="CATEGORY_AO">
+								<Name TextId="TextId_Module_GAO_4HI" />
+								<InfoText TextId="InfoTextId_Module_GAO_4HI" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAI_4HV 4Â·16Î»µçÑ¹ÐÍÄ£ÄâÁ¿ÊäÈë(0-10V/0-5V)-->
+				<ModuleItem ID="ID_Mod_GAI_4HV" ModuleIdentNumber="0x00000008">
+					<ModuleInfo CategoryRef="CATEGORY_AI">
+						<Name TextId="TextId_Module_GAI_4HV" />
+						<InfoText TextId="InfoTextId_Module_GAI_4HV" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAI_4HV_CATEGORY_AI" SubmoduleIdentNumber="0x00000008" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C3"/>
+								</Input>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="4" TransferSequence="1">
+									<Name TextId="GAI_4HV_MODULE_ParameterData" />
+									<Const Data="0x00,0x00,0x14,0x00" />
+									<Ref TextId="AI_NumRange" ValueItemTarget="IDV_AI_NumRange" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+									<Ref TextId="AI_Filter"  Visible="true" DataType="Unsigned16" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0..10000" DefaultValue="20"/>
+									<Ref TextId="AI_Voltage_Type"  ValueItemTarget="IDV_AI_Voltage_Type" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="3" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>							
+							<ModuleInfo CategoryRef="CATEGORY_AI">
+								<Name TextId="TextId_Module_GAI_4HV" />
+								<InfoText TextId="InfoTextId_Module_GAI_4HV" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAI_4HI 4Â·16Î»µçÁ÷ÐÍÄ£ÄâÁ¿ÊäÈë(4-20mA/0-20mA)-->
+				<ModuleItem ID="ID_Mod_GAI_4HI" ModuleIdentNumber="0x0000000A">
+					<ModuleInfo CategoryRef="CATEGORY_AI">
+						<Name TextId="TextId_Module_GAI_4HI" />
+						<InfoText TextId="InfoTextId_Module_GAI_4HI" />
+						<HardwareRelease Value="1" />
+						<SoftwareRelease Value="1" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAI_4HI_CATEGORY_AI" SubmoduleIdentNumber="0x0000000A" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData IOPS_Length="1" IOCS_Length="1">
+								<Input>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C3"/>
+								</Input>
+							</IOData>						
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="4" TransferSequence="1">
+									<Name TextId="GAI_4HI_MODULE_ParameterData" />
+									<Const Data="0x00,0x00,0x14,0x00" />
+									<Ref TextId="AI_NumRange" ValueItemTarget="IDV_AI_NumRange" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+									<Ref TextId="AI_Filter"  Visible="true" DataType="Unsigned16" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0..10000" DefaultValue="20"/>
+									<Ref TextId="AI_Current_Type"  ValueItemTarget="IDV_AI_Current_Type" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="3" Changeable="true" AllowedValues="0..1" DefaultValue="0"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo CategoryRef="CATEGORY_AI">
+								<Name TextId="TextId_Module_GAI_4HI" />
+								<InfoText TextId="InfoTextId_Module_GAI_4HI" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GRM_485-Modbus RTU module-->
+				<ModuleItem ID="ID_Mod_GRM_485" ModuleIdentNumber="0x0000005F" >
+					<ModuleInfo CategoryRef="CATEGORY_FUNCTION">
+						<Name TextId="TextId_Module_GRM_485" />
+						<InfoText TextId="InfoTextId_Module_GRM_485" />
+						<HardwareRelease Value="1.0" />
+						<SoftwareRelease Value="1.0" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GRM_485_CATEGORY_FUNCTION" SubmoduleIdentNumber="0x0000005F" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData>
+								<Input>
+									<DataItem DataType="Unsigned16" UseAsBits="true" TextId="IDT_ModbusInputFlag">
+										<BitDataItem BitOffset="0" TextId="IDT_ModbusDataSendFlag" />
+										<BitDataItem BitOffset="1" TextId="IDT_ModbusDataReceiveFlag" />
+									</DataItem>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_SlaveAddress"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_ModbusErrorCode"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_In_C3"/>
+								</Input>
+								<Output>
+									<DataItem DataType="Unsigned16" UseAsBits="true" TextId="IDT_ModbusOutputFlag">
+										<BitDataItem BitOffset="0" TextId="IDT_SendEnable"/>
+									</DataItem>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_SlaveID"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_Function"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_Address"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="IDT_CoilOrRegisterQuantity"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C0"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C1"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C2"/>
+									<DataItem DataType="Unsigned16" UseAsBits="false" TextId="Data_Out_C3"/>
+								</Output>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="32" TransferSequence="1">
+									<Name TextId="GRM_485_MODULE_ParameterData" />
+									<Const Data="0x5F,0x00,0x01,0x00,0x00,0x00,0x00,0x02,0x00,0x00,0x00,0x00,0x03,0x00,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x00,0x05,0x00,0x00,0x00,0x00,0x06,0x00,0x00,0x00,0x00" />
+									<Ref TextId="BaudRate" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="3" Changeable="true" AllowedValues="0..8" DefaultValue="3" ValueItemTarget="BaudRate Value" />
+									<Ref TextId="Data Bits" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="8" Changeable="false" AllowedValues="8" DefaultValue="8"/>
+									<Ref TextId="Parity Bits" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="13" Changeable="true" AllowedValues="0 1 2" DefaultValue="0" ValueItemTarget="Parity Bits Value" />
+									<Ref TextId="Stop Bits" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="18" Changeable="true" AllowedValues="1 2" DefaultValue="1" ValueItemTarget="Stop Bits Value" />
+									<Ref TextId="Response Timeout Low" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="23" Changeable="true" AllowedValues="0..255" DefaultValue="232"/>
+									<Ref TextId="Response Timeout High" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="24" Changeable="true" AllowedValues="0..255" DefaultValue="3"/>
+									<Ref TextId="Char Pitch" Visible="true" DataType="Unsigned8" BitOffset="0" ByteOffset="28" Changeable="true" AllowedValues="0..7" DefaultValue="2" ValueItemTarget="IDV_CharPitch"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo CategoryRef="CATEGORY_FUNCTION">
+								<Name TextId="TextId_Module_GRM_485" />
+								<InfoText TextId="InfoTextId_Module_GRM_485" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<!--GAO_4DA-4DA 8 byte ouput module-->
+				<ModuleItem ID="ID_Mod_GAO_4DA" ModuleIdentNumber="0x0000007C">
+					<ModuleInfo CategoryRef="CATEGORY_AO">
+						<Name TextId="TextId_Module_GAO_4DA" />
+						<InfoText TextId="InfoTextId_Module_GAO_4DA" />
+						<HardwareRelease Value="1.0" />
+						<SoftwareRelease Value="1.0" />
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="GAO_4DA_CATEGORY_AO" SubmoduleIdentNumber="0x0000007C" FixedInSubslots="1" PROFIsafeSupported="false">
+							<IOData>
+								<Input>
+									<DataItem DataType="Unsigned16" UseAsBits="true" TextId="TextId_4DA_ErrorStatus">
+										<BitDataItem BitOffset="0" TextId="TextId_IoutA_Error" />
+										<BitDataItem BitOffset="1" TextId="TextId_IoutB_Error" />
+										<BitDataItem BitOffset="2" TextId="TextId_IoutC_Error" />
+										<BitDataItem BitOffset="3" TextId="TextId_IoutD_Error" />
+										<BitDataItem BitOffset="4" TextId="TextId_VoutA_Error" />
+										<BitDataItem BitOffset="5" TextId="TextId_VoutB_Error" />
+										<BitDataItem BitOffset="6" TextId="TextId_VoutC_Error" />
+										<BitDataItem BitOffset="7" TextId="TextId_VoutD_Error" />
+										<BitDataItem BitOffset="8" TextId="TextId_OverHeat" />
+										<BitDataItem BitOffset="9" TextId="TextId_ChannelA_OverRange" />
+										<BitDataItem BitOffset="10" TextId="TextId_ChannelB_OverRange" />
+										<BitDataItem BitOffset="11" TextId="TextId_ChannelC_OverRange" />
+										<BitDataItem BitOffset="12" TextId="TextId_ChannelD_OverRange" />
+									</DataItem>
+								</Input>
+								<Output Consistency="All items consistency">
+									<DataItem DataType="Integer16" TextId="Data_Out_C0"/>
+									<DataItem DataType="Integer16" TextId="Data_Out_C1"/>
+									<DataItem DataType="Integer16" TextId="Data_Out_C2"/>
+									<DataItem DataType="Integer16" TextId="Data_Out_C3"/>
+								</Output>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="36" TransferSequence="0">
+									<Name TextId="General parameters"/>
+									<Ref TextId="4DA Signal Type Ch.0"   ID="4DA Signal Type Ch.0"  ValueItemTarget="4DA Signal Type"   DataType="BitArea"   ByteOffset="0"  BitOffset="0" BitLength="4"    Changeable="true" Visible="true" DefaultValue="0" AllowedValues="0 1 2 3 4 5"/>
+									<Ref TextId="4DA NumRange Ch.0"      ID="4DA NumRange Ch.0"     ValueItemTarget="4DA NumRange"      DataType="BitArea"   ByteOffset="0"  BitOffset="5" BitLength="2"    Changeable="true" Visible="true" DefaultValue="2"/>
+									<Ref TextId="4DA Enable Ch.0"        ID="4DA Enable Ch.0"       ValueItemTarget="4DA Enable"        DataType="Bit"       ByteOffset="0"  BitOffset="7" DefaultValue="1" Changeable="true" Visible="true" />
+									<Ref TextId="4DA FailSafeMode Ch.0"  ID="4DA FailSafeMode Ch.0" ValueItemTarget="4DA FailSafeMode"  DataType="Unsigned8" ByteOffset="1"  BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA PreSetVal Ch.0"     ID="4DA PreSetVal Ch.0"    ValueItemTarget="4DA PreSetVal"     DataType="Integer16" ByteOffset="2"  BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA Signal Type Ch.1"   ID="4DA Signal Type Ch.1"  ValueItemTarget="4DA Signal Type"   DataType="BitArea"   ByteOffset="8"  BitOffset="0" BitLength="4"    Changeable="true" Visible="true" DefaultValue="0" AllowedValues="0 1 2 3 4 5" />
+									<Ref TextId="4DA NumRange Ch.1"      ID="4DA NumRange Ch.1"     ValueItemTarget="4DA NumRange"      DataType="BitArea"   ByteOffset="8"  BitOffset="5" BitLength="2"    Changeable="true" Visible="true" DefaultValue="2" />
+									<Ref TextId="4DA Enable Ch.1"        ID="4DA Enable Ch.1"       ValueItemTarget="4DA Enable"        DataType="Bit"       ByteOffset="8"  BitOffset="7" DefaultValue="1" Changeable="true" Visible="true" />
+									<Ref TextId="4DA FailSafeMode Ch.1"  ID="4DA FailSafeMode Ch.1" ValueItemTarget="4DA FailSafeMode"  DataType="Unsigned8" ByteOffset="9"  BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA PreSetVal Ch.1"     ID="4DA PreSetVal Ch.1"    ValueItemTarget="4DA PreSetVal"     DataType="Integer16" ByteOffset="10" BitOffset="0" DefaultValue="0" Changeable="true" Visible="true"  />
+									<Ref TextId="4DA Signal Type Ch.2"   ID="4DA Signal Type Ch.2"  ValueItemTarget="4DA Signal Type"   DataType="BitArea"   ByteOffset="16" BitOffset="0" BitLength="4"    Changeable="true" Visible="true" DefaultValue="0" AllowedValues="0 1 2 3 4 5" />
+									<Ref TextId="4DA NumRange Ch.2"      ID="4DA NumRange Ch.2"     ValueItemTarget="4DA NumRange"      DataType="BitArea"   ByteOffset="16" BitOffset="5" BitLength="2"    Changeable="true" Visible="true" DefaultValue="2" />
+									<Ref TextId="4DA Enable Ch.2"        ID="4DA Enable Ch.2"       ValueItemTarget="4DA Enable"        DataType="Bit"       ByteOffset="16" BitOffset="7" DefaultValue="1" Changeable="true" Visible="true" />
+									<Ref TextId="4DA FailSafeMode Ch.2"  ID="4DA FailSafeMode Ch.2" ValueItemTarget="4DA FailSafeMode"  DataType="Unsigned8" ByteOffset="17" BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA PreSetVal Ch.2"     ID="4DA PreSetVal Ch.2"    ValueItemTarget="4DA PreSetVal"     DataType="Integer16" ByteOffset="18" BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA Signal Type Ch.3"   ID="4DA Signal Type Ch.3"  ValueItemTarget="4DA Signal Type"   DataType="BitArea"   ByteOffset="24" BitOffset="0" BitLength="4"    Changeable="true" Visible="true" DefaultValue="0" AllowedValues="0 1 2 3 4 5" />
+									<Ref TextId="4DA NumRange Ch.3"      ID="4DA NumRange Ch.3"     ValueItemTarget="4DA NumRange"      DataType="BitArea"   ByteOffset="24" BitOffset="5" BitLength="2"    Changeable="true" Visible="true" DefaultValue="2" />
+									<Ref TextId="4DA Enable Ch.3"        ID="4DA Enable Ch.3"       ValueItemTarget="4DA Enable"        DataType="Bit"       ByteOffset="24" BitOffset="7" DefaultValue="1" Changeable="true" Visible="true" />
+									<Ref TextId="4DA FailSafeMode Ch.3"  ID="4DA FailSafeMode Ch.3" ValueItemTarget="4DA FailSafeMode"  DataType="Unsigned8" ByteOffset="25" BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="4DA PreSetVal Ch.3"     ID="4DA PreSetVal Ch.3"    ValueItemTarget="4DA PreSetVal"     DataType="Integer16" ByteOffset="26" BitOffset="0" DefaultValue="0" Changeable="true" Visible="true" />
+									<Ref TextId="TextId_ByteOrder"       ID="ByteOrder"             ValueItemTarget="4DA ByteOrder"     DataType="Unsigned8" ByteOffset="32" BitOffset="0" DefaultValue="1" Changeable="false" Visible="true" AllowedValues="0 1" />
+									<MenuList>
+										<MenuItem ID="4DA">
+											<Name TextId="General parameters" />
+											<MenuRef MenuTarget="General configure" />
+											<MenuRef MenuTarget="Channel_0" />
+											<MenuRef MenuTarget="Channel_1" />
+											<MenuRef MenuTarget="Channel_2" />
+											<MenuRef MenuTarget="Channel_3" />
+										</MenuItem>
+										<MenuItem ID="General configure">
+											<Name TextId="TextId_General_configure" />
+											<ParameterRef ParameterTarget="ByteOrder" />
+										</MenuItem>
+										<MenuItem ID="Channel_0">
+											<Name TextId="channel 0" />
+											<ParameterRef ParameterTarget="4DA Signal Type Ch.0" />
+											<ParameterRef ParameterTarget="4DA NumRange Ch.0" />
+											<ParameterRef ParameterTarget="4DA Enable Ch.0" />
+											<ParameterRef ParameterTarget="4DA FailSafeMode Ch.0" />
+											<ParameterRef ParameterTarget="4DA PreSetVal Ch.0" />
+										</MenuItem>
+										<MenuItem ID="Channel_1">
+											<Name TextId="channel 1" />
+											<ParameterRef ParameterTarget="4DA Signal Type Ch.1" />
+											<ParameterRef ParameterTarget="4DA NumRange Ch.1" />
+											<ParameterRef ParameterTarget="4DA Enable Ch.1" />
+											<ParameterRef ParameterTarget="4DA FailSafeMode Ch.1" />
+											<ParameterRef ParameterTarget="4DA PreSetVal Ch.1" />
+										</MenuItem>
+										<MenuItem ID="Channel_2">
+											<Name TextId="channel 2" />
+											<ParameterRef ParameterTarget="4DA Signal Type Ch.2" />
+											<ParameterRef ParameterTarget="4DA NumRange Ch.2" />
+											<ParameterRef ParameterTarget="4DA Enable Ch.2" />
+											<ParameterRef ParameterTarget="4DA FailSafeMode Ch.2" />
+											<ParameterRef ParameterTarget="4DA PreSetVal Ch.2" />
+										</MenuItem>
+										<MenuItem ID="Channel_3">
+											<Name TextId="channel 3" />
+											<ParameterRef ParameterTarget="4DA Signal Type Ch.3" />
+											<ParameterRef ParameterTarget="4DA NumRange Ch.3" />
+											<ParameterRef ParameterTarget="4DA Enable Ch.3" />
+											<ParameterRef ParameterTarget="4DA FailSafeMode Ch.3" />
+											<ParameterRef ParameterTarget="4DA PreSetVal Ch.3" />
+										</MenuItem>
+									</MenuList>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+							<ModuleInfo CategoryRef="CATEGORY_AO">
+								<Name TextId="TextId_Module_GAO_4DA" />
+								<InfoText TextId="InfoTextId_Module_GAO_4DA" />
+							</ModuleInfo>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+			</ModuleList>
+			<ValueList>
+				<ValueItem ID="Function_for_MT_LED">
+					<Help TextId="Help_MT-LED-Setting" />
+					<Assignments>
+						<Assign Content="0" TextId="Maintenance LED" />
+						<Assign Content="1" TextId="Sync LED" />
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Safety_Output_Value">
+					<Help TextId="TextId_Safety_Output_Value" />
+					<Assignments>
+						<Assign Content="0" TextId="TextId_Keep_Output" />
+						<Assign Content="1" TextId="TextId_Clear_Output" />
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="SubstitutionMode">
+					<Assignments>
+						<Assign TextId="Replacement value" Content="1"/>
+						<Assign TextId="Last value" Content="0"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="ReplacementValue0..7"></ValueItem>
+				<ValueItem ID="ReplacementValue8..15"></ValueItem>
+				<ValueItem ID="BaudRate Value">
+					<Assignments>
+						<Assign TextId="BaudRate_1200bps" Content="0"/>
+						<Assign TextId="BaudRate_2400bps" Content="1"/>
+						<Assign TextId="BaudRate_4800bps" Content="2"/>
+						<Assign TextId="BaudRate_9600bps" Content="3"/>
+						<Assign TextId="BaudRate_14400bps" Content="4"/>
+						<Assign TextId="BaudRate_19200bps" Content="5"/>
+						<Assign TextId="BaudRate_38400bps" Content="6"/>
+						<Assign TextId="BaudRate_57600bps" Content="7"/>
+						<Assign TextId="BaudRate_115200bps" Content="8"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Parity Bits Value">
+					<Assignments>
+						<Assign TextId="Parity_None" Content="0"/>
+						<Assign TextId="Parity_Odd" Content="1"/>
+						<Assign TextId="Parity_Even" Content="2"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Stop Bits Value">
+					<Assignments>
+						<Assign TextId="Stop_1_bit" Content="1"/>
+						<Assign TextId="Stop_2_bit" Content="2"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="IDV_CharPitch">
+					<Assignments>
+						<Assign TextId="IDT_CharPitch_1.5Chars" Content="0"/>
+						<Assign TextId="IDT_CharPitch_3.5Chars" Content="1"/>
+						<Assign TextId="IDT_CharPitch_5Chars" Content="2"/>
+						<Assign TextId="IDT_CharPitch_10Chars" Content="3"/>
+						<Assign TextId="IDT_CharPitch_20Chars" Content="4"/>
+						<Assign TextId="IDT_CharPitch_50Chars" Content="5"/>
+						<Assign TextId="IDT_CharPitch_100Chars" Content="6"/>
+						<Assign TextId="IDT_CharPitch_200Chars" Content="7"/>
+					</Assignments>
+				</ValueItem>
+				<!-- GAO_4DA ValueList-->
+				<ValueItem ID="4DA Signal Type">
+					<Assignments>
+						<Assign TextId="0V~5V"   Content="0"/>
+						<Assign TextId="0V~10V"   Content="1"/>
+						<Assign TextId="-5V~5V"   Content="2"/>
+						<Assign TextId="-10V~10V"   Content="3"/>
+						<Assign TextId="4mA~20mA"   Content="4"/>
+						<Assign TextId="0mA~20mA"   Content="5"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="4DA NumRange">
+					<Assignments>
+						<Assign TextId="¡À20000"   Content="0"/>
+						<Assign TextId="¡À32000"   Content="1"/>
+						<Assign TextId="¡À27648"   Content="2"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="4DA Enable">
+					<Help TextId="Help_4DA Enable" />
+				</ValueItem>
+				<ValueItem ID="4DA FailSafeMode">
+					<Assignments>
+						<Assign TextId="4DA FailSafeMode 0"   Content="0"/>
+						<Assign TextId="4DA FailSafeMode 1"   Content="1"/>
+						<Assign TextId="4DA FailSafeMode 2"   Content="2"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="4DA PreSetVal">
+					<Help TextId="Help_4DA PreSetVal" />
+				</ValueItem>
+				<ValueItem ID="4DA ByteOrder">
+					<Assignments>
+						<Assign TextId="TextId_A_B"   Content="0"/>
+						<Assign TextId="TextId_B_A"   Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<!--AI Filter-->
+				<ValueItem ID="IDV_AI_NumRange">
+					<Assignments>
+						<Assign TextId="IDT_AI_NumRange_0_65535" Content="0"/>
+						<Assign TextId="IDT_AI_NumRange_0_27648" Content="1"/>
+						<Assign TextId="IDT_AI_NumRange_0_4095" Content="2"/>
+					</Assignments>
+				</ValueItem>								
+				<ValueItem ID="IDV_AI_Current_Type">
+					<Assignments>
+						<Assign TextId="IDT_AI_CurrentType_0" Content="0"/>
+						<Assign TextId="IDT_AI_CurrentType_1" Content="1"/>
+					</Assignments>
+				</ValueItem>				
+				<ValueItem ID="IDV_AI_Voltage_Type">
+					<Assignments>
+						<Assign TextId="IDT_AI_VoltageType_0" Content="0"/>
+						<Assign TextId="IDT_AI_VoltageType_1" Content="1"/>
+					</Assignments>
+				</ValueItem>											
+			</ValueList>
+			<GraphicsList>
+				<GraphicItem ID="ID_Graph_V2.2" GraphicFile="GSDML-GAVIOTA-GRC-H0PN" />
+			</GraphicsList>
+			<CategoryList>
+				<CategoryItem ID="CATEGORY_DI" TextId="DI" />
+				<CategoryItem ID="CATEGORY_DO" TextId="DO" />
+				<CategoryItem ID="CATEGORY_AI" TextId="AI" />
+				<CategoryItem ID="CATEGORY_AO" TextId="AO" />
+				<CategoryItem ID="CATEGORY_FUNCTION" TextId="Functional module" />
+			</CategoryList>
+			<ExternalTextList>
+				<PrimaryLanguage>
+					<!--without translation-->
+					<Text TextId="GRC-H0PN" Value="GRC-H0PN" />
+					<Text TextId="DAP_NAME" Value="GRC-H0PN" />
+					<Text TextId="TOK_TPS1_board" Value="Renesas TPS1 based board" />
+					<Text TextId="TOK_Subslot_8000" Value="X1" />
+					<Text TextId="TOK_Subslot_8001" Value="X1 P1" />
+					<Text TextId="TOK_Subslot_8002" Value="X1 P2" />
+					<Text TextId="TOK_DAP_InterfaceModule" Value="PN-IO" />
+					<Text TextId="TOK_Port1" Value="Port 1 - RJ45" />
+					<Text TextId="TOK_Port2" Value="Port 2 - RJ45" />
+					<Text TextId="DI" Value="DI" />
+					<Text TextId="DO" Value="DO" />
+					<Text TextId="AI" Value="AI" />
+					<Text TextId="AO" Value="AO" />
+					<Text TextId="Functional module" Value="Functional module" />
+					<Text TextId="TI_OFFSET" Value="TI_OFFSET"/>
+					<Text TextId="TO_OFFSET" Value="TO_OFFSET"/>
+					<!--DAPs-->
+					<Text TextId="DAP_MODULE_INFO" Value="ProfiNet Adapter" />
+					<!-- DI module-->
+					<Text TextId="TextId_Module_GDI_16P" Value="GDI_16P" />
+					<Text TextId="TextId_Module_GDI_16N" Value="GDI_16N" />
+					<!-- DO module-->
+					<Text TextId="TextId_Module_GDO_16P" Value="GDO_16P" />
+					<Text TextId="TextId_Module_GDO_16N" Value="GDO_16N" />
+					<!-- AI module-->
+					<Text TextId="TextId_Module_GAI_4HV" Value="GAI_4HV" />
+					<Text TextId="TextId_Module_GAI_4HI" Value="GAI_4HI" />
+					<Text TextId="AI_0_FILTER" Value="AI 0 Filter"  />
+					<Text TextId="AI_1_FILTER" Value="AI 1 Filter"  />
+					<Text TextId="AI_2_FILTER" Value="AI 2 Filter"  />
+					<Text TextId="AI_3_FILTER" Value="AI 3 Filter"  />
+					<!-- AO module-->
+					<Text TextId="TextId_Module_GAO_4HV" Value="GAO_4HV" />
+					<Text TextId="TextId_Module_GAO_4HI" Value="GAO_4HI" />
+					<Text TextId="TextId_Module_GAO_4LV" Value="GAO_4LV" />
+					<Text TextId="TextId_Module_GAO_4LI" Value="GAO_4LI" />
+					<Text TextId="TextId_Module_GAO_4DA" Value="GAO_4DA" />
+					<!-- Functional module -->
+					<Text TextId="TextId_Module_GRM_485" Value="GRM_485" />
+					<!--The Description of DI-->
+					<Text TextId="InfoTextId_Module_GDI_16P" Value="16bit PNP Diagital Input" />
+					<Text TextId="InfoTextId_Module_GDI_16N" Value="16bit NPN Diagital Input" />
+					<!--The Description of DO-->
+					<Text TextId="InfoTextId_Module_GDO_16P" Value="16bit PNP Diagital Output" />
+					<Text TextId="InfoTextId_Module_GDO_16N" Value="16bit NPN Diagital Output" />
+					<!--The Description of AI-->
+					<Text TextId="InfoTextId_Module_GAI_4HV" Value="16bit-sampling Voltage Analog Input" />
+					<Text TextId="InfoTextId_Module_GAI_4HI" Value="16bit-sampling Current Analog Input" />
+					<!--The Description of AO-->
+					<Text TextId="InfoTextId_Module_GAO_4HV" Value="16bit precision Voltage Analog Output" />
+					<Text TextId="InfoTextId_Module_GAO_4HI" Value="16bit precision Current Analog Output" />
+					<Text TextId="InfoTextId_Module_GAO_4LV" Value="12bit precision Voltage Analog Output" />
+					<Text TextId="InfoTextId_Module_GAO_4LI" Value="12bit precision Current Analog Output" />
+					<Text TextId="InfoTextId_Module_GAO_4DA" Value="4 channel analog output module" />
+					<!--The Description of FUNCTION MODULE-->
+					<Text TextId="InfoTextId_Module_GRM_485" Value="Modbus RTU Master" />
+					<Text TextId="IDT_ModbusInputFlag" Value="Modbus Input Flag"/>
+					<Text TextId="IDT_ModbusDataSendFlag" Value="Modbus Data Send Flag"/>
+					<Text TextId="IDT_ModbusDataReceiveFlag" Value="Modbus Data Receive Flag"/>
+					<Text TextId="IDT_SlaveAddress" Value="Modbus Slave Address"/>
+					<Text TextId="IDT_ModbusErrorCode" Value="Modbus Error Code"/>
+					<Text TextId="IDT_ModbusOutputFlag" Value="Modbus Output Flag"/>
+					<Text TextId="IDT_SendEnable" Value="Send Enable"/>
+					<Text TextId="IDT_SlaveID" Value="Slave ID"/>
+					<Text TextId="IDT_Function" Value="Function"/>
+					<Text TextId="IDT_Address" Value="Address"/>
+					<Text TextId="IDT_CoilOrRegisterQuantity" Value="Coil Or Register Quantity"/>
+					<Text TextId="Response Timeout" Value="Response Timeout"/>
+					<Text TextId="Response Timeout High" Value="Response Timeout High"/>
+					<Text TextId="Response Timeout Low" Value="Response Timeout Low"/>
+					<Text TextId="Char Pitch" Value="Char Pitch"/>
+					<Text TextId="IDT_CharPitch_1.5Chars" Value="1.5 Chars"/>
+					<Text TextId="IDT_CharPitch_3.5Chars" Value="3.5 Chars"/>
+					<Text TextId="IDT_CharPitch_5Chars" Value="5 Chars"/>
+					<Text TextId="IDT_CharPitch_10Chars" Value="10 Chars"/>
+					<Text TextId="IDT_CharPitch_20Chars" Value="20 Chars"/>
+					<Text TextId="IDT_CharPitch_50Chars" Value="50 Chars"/>
+					<Text TextId="IDT_CharPitch_100Chars" Value="100 Chars"/>
+					<Text TextId="IDT_CharPitch_200Chars" Value="200 Chars"/>
+					<Text TextId="BaudRate_1200bps" Value="1200bps" />
+					<Text TextId="BaudRate_2400bps" Value="2400bps" />
+					<Text TextId="BaudRate_4800bps" Value="4800bps" />
+					<Text TextId="BaudRate_9600bps" Value="9600bps" />
+					<Text TextId="BaudRate_14400bps" Value="14400bps" />
+					<Text TextId="BaudRate_19200bps" Value="19200bps" />
+					<Text TextId="BaudRate_38400bps" Value="38400bps" />
+					<Text TextId="BaudRate_57600bps" Value="57600bps" />
+					<Text TextId="BaudRate_115200bps" Value="115200bps" />
+					<Text Value="BaudRate" TextId="BaudRate" />
+					<Text Value="Data Bits" TextId="Data Bits" />
+					<Text Value="Parity Bits" TextId="Parity Bits" />
+					<Text Value="Stop Bits" TextId="Stop Bits" />
+					<Text Value="Interval Time" TextId="Interval Time" />
+					<Text Value="Comm Mode" TextId="Comm Mode" />
+					<Text Value="Rev Mode" TextId="Rev Mode" />
+					<Text TextId="Parity_None" Value="None" />
+					<Text TextId="Parity_Odd" Value="Odd" />
+					<Text TextId="Parity_Even" Value="Even" />
+					<Text TextId="Stop_1_bit" Value="1 bit" />
+					<Text TextId="Stop_2_bit" Value="2 bit" />
+					<!--I/O LENGTH-->
+					<Text TextId="GDI_16P_BYTE_LEN" Value="2 byte input" />
+					<Text TextId="GDI_16N_BYTE_LEN" Value="2 byte input" />
+					<Text TextId="GDO_16P_BYTE_LEN" Value="2 byte output" />
+					<Text TextId="GDO_16N_BYTE_LEN" Value="2 byte output" />
+					<Text TextId="Data_Out_C0" Value="Channel 0"/>
+					<Text TextId="Data_Out_C1" Value="Channel 1"/>
+					<Text TextId="Data_Out_C2" Value="Channel 2"/>
+					<Text TextId="Data_Out_C3" Value="Channel 3"/>
+					<Text TextId="Data_In_C0" Value="Channel 0"/>
+					<Text TextId="Data_In_C1" Value="Channel 1"/>
+					<Text TextId="Data_In_C2" Value="Channel 2"/>
+					<Text TextId="Data_In_C3" Value="Channel 3"/>
+					<!--The description of Configuration Parameters-->
+					<!--DI-->
+					<Text TextId="DI_CHANNEL_DEBOUNCE_TIME" Value="Debounce Time(ms)"/>
+					<!--Diagnosis-->
+					<Text Value="Replacement value" TextId="Replacement value" />
+					<Text Value="Last value" TextId="Last value" />
+					<Text Value="default value cautions" TextId="SubstitutionMode" />
+					<Text Value="default value bits 0-7" TextId="ReplacementValue0..7" />
+					<Text Value="default value bits 8-15" TextId="ReplacementValue8..15" />
+					<!--The description of Parameter -->
+					<Text TextId="GDI_16P_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GDI_16N_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GDO_16P_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GDO_16N_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAO_4HV_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAO_4HI_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAO_4LV_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAO_4LI_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAI_4HV_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GAI_4HI_MODULE_ParameterData" Value="Module General Parameter" />
+					<Text TextId="GRM_485_MODULE_ParameterData" Value="Module General Parameter" />
+					<!--Function of  MT-LED-->
+					<Text TextId="TOK_Function_of _MT-LED" Value="MT-LED-Settings" />
+					<Text TextId="Help_MT-LED-Setting" Value="MT-LED-Settings" />
+					<Text TextId="Maintenance LED" Value="Maintenance LED" />
+					<Text TextId="TOK_Safety_Output_Value" Value="Safety Output Value" />
+					<Text TextId="TextId_Safety_Output_Value" Value="Safety Output Value" />
+					<Text TextId="TextId_Keep_Output" Value="Keep Output" />
+					<Text TextId="TextId_Clear_Output" Value="Clear Output" />
+					<Text TextId="Sync LED" Value="Sync LED" />
+					<Text TextId="MT LED Setup" Value="Setting of MT-LED as Sync-LED" />
+                    <Text TextId="TextId_Safety_Output" Value="Setting Output when bus Error" />
+					<!-- 4DA module -->
+					<Text TextId="General parameters" Value="General parameters"/>
+					<Text TextId="channel 0" Value="Channel 0" />
+					<Text TextId="channel 1" Value="Channel 1" />
+					<Text TextId="channel 2" Value="Channel 2" />
+					<Text TextId="channel 3" Value="Channel 3" />
+					<Text TextId="channel 4" Value="Channel 4" />
+					<Text TextId="channel 5" Value="Channel 5" />
+					<Text TextId="channel 6" Value="Channel 6" />
+					<Text TextId="channel 7" Value="Channel 7" />
+					<Text TextId="4DA Signal Type Ch.0" Value="SignalType Ch.0 " />
+					<Text TextId="4DA NumRange Ch.0" Value="NumRange Ch.0 " />
+					<Text TextId="4DA Enable Ch.0" Value="Enable Ch.0 " />
+					<Text TextId="4DA FailSafeMode Ch.0" Value="FailSafeMode Ch.0 " />
+					<Text TextId="4DA PreSetVal Ch.0" Value="PreSetVal Ch.0 " />
+					<Text TextId="4DA Signal Type Ch.1" Value="SignalType Ch.1 " />
+					<Text TextId="4DA NumRange Ch.1" Value="NumRange Ch.1 " />
+					<Text TextId="4DA Enable Ch.1" Value="Enable Ch.1 " />
+					<Text TextId="4DA FailSafeMode Ch.1" Value="FailSafeMode Ch.1 " />
+					<Text TextId="4DA PreSetVal Ch.1" Value="PreSetVal Ch.1 " />
+					<Text TextId="4DA Signal Type Ch.2" Value="SignalType Ch.2 " />
+					<Text TextId="4DA NumRange Ch.2" Value="NumRange Ch.2 " />
+					<Text TextId="4DA Enable Ch.2" Value="Enable Ch.2 " />
+					<Text TextId="4DA FailSafeMode Ch.2" Value="FailSafeMode Ch.2 " />
+					<Text TextId="4DA PreSetVal Ch.2" Value="PreSetVal Ch.2 " />
+					<Text TextId="4DA Signal Type Ch.3" Value="SignalType Ch.3 " />
+					<Text TextId="4DA NumRange Ch.3" Value="NumRange Ch.3 " />
+					<Text TextId="4DA FailSafeMode Ch.3" Value="FailSafeMode Ch.3 " />
+					<Text TextId="4DA Enable Ch.3" Value="Enable Ch.3 " />
+					<Text TextId="4DA PreSetVal Ch.3" Value="PreSetVal Ch.3 " />
+					<Text TextId="4DA FailSafeMode 0" Value="Output Clear " />
+					<Text TextId="4DA FailSafeMode 1" Value="Output Holding " />
+					<Text TextId="4DA FailSafeMode 2" Value="Output PreSetVal " />
+					<Text TextId="Help_4DA Enable" Value="Enable " />
+					<Text TextId="Help_4DA PreSetVal" Value="PreSetVal " />
+					<Text TextId="¡À20000" Value="-20000~20000" />
+					<Text TextId="¡À32000" Value="-32000~32000" />
+					<Text TextId="¡À27648" Value="-27648~27648" />
+					<Text TextId="-10V~10V" Value="-10V~10V" />
+					<Text TextId="0V~10V" Value="0V~10V" />
+					<Text TextId="-5V~5V" Value="-5V~5V" />
+					<Text TextId="0V~5V" Value="0V~5V" />
+					<Text TextId="1V~5V" Value="1V~5V" />
+					<Text TextId="0mA~20mA" Value="0mA~20mA" />
+					<Text TextId="4mA~20mA" Value="4mA~20mA" />
+					<Text TextId="TextId_4DA_ErrorStatus" Value="4DA Module Error Status" />
+					<Text TextId="TextId_VoutA_Error" Value="Ch.0 Voltage Error" />
+					<Text TextId="TextId_VoutB_Error" Value="Ch.1 Voltage Error" />
+					<Text TextId="TextId_VoutC_Error" Value="Ch.2 Voltage Error" />
+					<Text TextId="TextId_VoutD_Error" Value="Ch.3 Voltage Error" />
+					<Text TextId="TextId_IoutA_Error" Value="Ch.0 Current Error" />
+					<Text TextId="TextId_IoutB_Error" Value="Ch.1 Current Error" />
+					<Text TextId="TextId_IoutC_Error" Value="Ch.2 Current Error" />
+					<Text TextId="TextId_IoutD_Error" Value="Ch.3 Current Error" />
+					<Text TextId="TextId_OverHeat" Value="OverHeat Warning" />
+					<Text TextId="TextId_ChannelA_OverRange" Value="Ch.0 Over Range" />
+					<Text TextId="TextId_ChannelB_OverRange" Value="Ch.1 Over Range" />
+					<Text TextId="TextId_ChannelC_OverRange" Value="Ch.2 Over Range" />
+					<Text TextId="TextId_ChannelD_OverRange" Value="Ch.3 Over Range" />
+					<Text TextId="TextId_General_configure" Value="General Configure" />
+					<Text TextId="TextId_ByteOrder" Value="Byte Order" />
+					<Text TextId="TextId_A_B" Value="A_B" />
+					<Text TextId="TextId_B_A" Value="B_A" />
+					<Text TextId="AI_Filter" Value="AI Filter(ms)"/>
+					<Text TextId="AI_NumRange" Value="Number Range"/>
+					<Text TextId="IDT_AI_NumRange_0_65535" Value="0~65535"/>
+					<Text TextId="IDT_AI_NumRange_0_27648" Value="0~27648"/>
+					<Text TextId="IDT_AI_NumRange_0_4095" Value="0~4095"/>
+					<Text TextId="AI_Current_Type" Value="Current Type"/>
+					<Text TextId="TextId_Module_Status" Value="ModuleStatus" />
+					<Text TextId="IDT_AI_CurrentType_0" Value="0~20mA"/>
+					<Text TextId="IDT_AI_CurrentType_1" Value="4~20mA"/>
+					<Text TextId="AI_Voltage_Type" Value="Voltage Type"/>
+					<Text TextId="IDT_AI_VoltageType_0" Value="0~10V"/>
+					<Text TextId="IDT_AI_VoltageType_1" Value="0~5V"/>					
+				</PrimaryLanguage>
+			</ExternalTextList>
+		</ApplicationProcess>
+	</ProfileBody>
+</ISO15745Profile>
